@@ -1,5 +1,6 @@
 package com.schoolmanagement.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "parent")
@@ -40,5 +43,9 @@ public class Parent {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "parent")
+    private List<Student> students=new ArrayList<>();
 
 }
