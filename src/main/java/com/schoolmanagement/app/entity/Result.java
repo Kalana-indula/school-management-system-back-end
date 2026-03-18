@@ -19,4 +19,16 @@ public class Result {
 
     @Column(nullable = false)
     private Integer score;
+
+    @ManyToOne
+    @JoinColumn(name = "student")
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "exam")
+    private Exam exam;
+
+    @ManyToOne
+    @JoinColumn(name = "assignment")
+    private Assignment assignment;
 }

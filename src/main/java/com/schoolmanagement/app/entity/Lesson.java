@@ -1,5 +1,6 @@
 package com.schoolmanagement.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.schoolmanagement.app.entity.types.Day;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "lesson")
@@ -38,6 +41,18 @@ public class Lesson {
     private Subject subject;
 
     @ManyToOne
-    @JoinColumn(name = "class")
-    private ClassEntity class;
+    @JoinColumn(name = "class_room")
+    private ClassEntity classEntity;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "lesson")
+    private List<Exam> exams=new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "lesson")
+    private List<Assignment> assignments=new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "lesson")
+    private List<Attendance> attendances=new ArrayList<>();
 }

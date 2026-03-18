@@ -25,4 +25,12 @@ public class Attendance {
 
     @Column(nullable = false)
     private Boolean present;
+
+    @ManyToOne
+    @JoinColumn(name = "student")
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "lesson")
+    private Lesson lesson;
 }

@@ -28,4 +28,8 @@ public class Announcement {
 
     @Column(nullable = false)
     private LocalDateTime date;
+
+    @ManyToOne
+    @JoinColumn(name = "class_room")
+    private ClassEntity classEntity;
 }

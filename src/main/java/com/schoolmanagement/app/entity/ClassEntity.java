@@ -37,6 +37,18 @@ public class ClassEntity {
     private Teacher teacher;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "class")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "classEntity")
     private List<Lesson> lessons=new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "classEntity")
+    private List<Student> students=new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "classEntity")
+    private List<Event> events=new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "classEntity")
+    private List<Announcement> announcements=new ArrayList<>();
 }

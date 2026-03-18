@@ -31,4 +31,8 @@ public class Event {
 
     @Column(nullable = false)
     private LocalDateTime endTime;
+
+    @ManyToOne
+    @JoinColumn(name = "class_room")
+    private ClassEntity classEntity;
 }
