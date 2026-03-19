@@ -24,20 +24,25 @@ public class Lesson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Day day;
 
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
+    @Column(name = "end_time", nullable = false)
     private LocalDateTime endTime;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "teacher")
+    @JoinColumn(name = "teacher", nullable = false)
     private Teacher teacher;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "subject")
+    @JoinColumn(name = "subject", nullable = false)
     private Subject subject;
 
     @ManyToOne
@@ -45,14 +50,14 @@ public class Lesson {
     private ClassEntity classEntity;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "lesson")
-    private List<Exam> exams=new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "lesson")
+    private List<Exam> exams = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "lesson")
-    private List<Assignment> assignments=new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "lesson")
+    private List<Assignment> assignments = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "lesson")
-    private List<Attendance> attendances=new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "lesson")
+    private List<Attendance> attendances = new ArrayList<>();
 }
