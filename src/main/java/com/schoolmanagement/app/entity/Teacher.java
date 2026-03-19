@@ -21,6 +21,9 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String teacherId;
+
     @Column(nullable = false,unique = true)
     private String username;
 
@@ -56,7 +59,7 @@ public class Teacher {
 
     @ManyToMany
     @JoinTable(
-            name = "teacher_subjects",
+            name = "teacher_subject",
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
