@@ -1,0 +1,26 @@
+package com.schoolmanagement.app.service.impl;
+
+import com.schoolmanagement.app.entity.Teacher;
+import com.schoolmanagement.app.repository.TeacherRepository;
+import com.schoolmanagement.app.service.TeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class TeacherServiceImpl implements TeacherService {
+
+
+    private final TeacherRepository teacherRepository;
+
+    @Autowired
+    public TeacherServiceImpl(TeacherRepository teacherRepository) {
+        this.teacherRepository = teacherRepository;
+    }
+
+    @Override
+    public List<Teacher> findAllTeachers() {
+        return teacherRepository.findAll();
+    }
+}
