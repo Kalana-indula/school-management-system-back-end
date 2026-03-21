@@ -2,6 +2,7 @@ package com.schoolmanagement.app.service.impl;
 
 import com.schoolmanagement.app.entity.Teacher;
 import com.schoolmanagement.app.repository.TeacherRepository;
+import com.schoolmanagement.app.repository.projection.TeacherListProjection;
 import com.schoolmanagement.app.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<Teacher> findAllTeachers() {
-        return teacherRepository.findAll();
+    public List<TeacherListProjection> findAllTeachers() {
+        return teacherRepository.getAllTeachersList();
     }
 }
