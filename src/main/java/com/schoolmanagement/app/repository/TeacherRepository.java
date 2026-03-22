@@ -13,10 +13,12 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
 
 //  Find the teachers details
-    @Query(value = """
+@Query(value = """
             SELECT
                 t.name AS name,
                 t.teacher_id AS teacherId,
+                t.email AS email,
+                t.img AS img,
                 COALESCE(
                     STRING_AGG(DISTINCT s.name, ', ' ORDER BY s.name),
                     ''
@@ -34,7 +36,7 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
                 ON s.id = ts.subject_id
             LEFT JOIN class_room cr
                 ON cr.teacher = t.id
-            GROUP BY t.id, t.name, t.teacher_id, t.phone, t.address
+            GROUP BY t.id, t.name, t.teacher_id, t.email, t.img, t.phone, t.address
             ORDER BY t.name
             """, nativeQuery = true)
     List<TeacherListProjection> getAllTeachersList();

@@ -6,6 +6,10 @@ public interface TeacherListProjection {
 
     String getTeacherId();
 
+    String getEmail();
+
+    String getImg();
+
     String getSubjects();
 
     String getClasses();
