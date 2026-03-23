@@ -1,6 +1,7 @@
 package com.schoolmanagement.app.controller;
 
 import com.schoolmanagement.app.entity.Student;
+import com.schoolmanagement.app.repository.projection.StudentListProjection;
 import com.schoolmanagement.app.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,7 @@ public class StudentController {
     @GetMapping
     public ResponseEntity<?> findAllStudents() {
         try {
-            List<Student> studentList=studentService.findAllStudents();
+            List<StudentListProjection> studentList=studentService.findAllStudents();
             return ResponseEntity.status(HttpStatus.OK).body(studentList);
         }catch (Exception ex){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
