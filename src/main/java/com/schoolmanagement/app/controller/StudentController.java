@@ -26,12 +26,10 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<?> findAllStudents() {
-        try {
-            List<StudentListProjection> studentList=studentService.findAllStudents();
-            return ResponseEntity.status(HttpStatus.OK).body(studentList);
-        }catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
-        }
+    public ResponseEntity<List<StudentListProjection>> findAllStudents() {
+
+        List<StudentListProjection> studentList = studentService.findAllStudents();
+        return ResponseEntity.status(HttpStatus.OK).body(studentList);
+
     }
 }

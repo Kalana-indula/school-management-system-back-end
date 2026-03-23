@@ -27,13 +27,10 @@ public class TeacherController {
 
     //create new teacher
     @GetMapping
-    public ResponseEntity<?> findAllTeachers() {
-        try{
-            List<TeacherListProjection> teachersList = teacherService.findAllTeachers();
+    public ResponseEntity<List<TeacherListProjection>> findAllTeachers() {
 
-            return ResponseEntity.status(HttpStatus.OK).body(teachersList);
-        }catch(Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+        List<TeacherListProjection> teachersList = teacherService.findAllTeachers();
+        return ResponseEntity.status(HttpStatus.OK).body(teachersList);
+
     }
 }
