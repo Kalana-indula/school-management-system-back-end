@@ -15,6 +15,7 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 //  Find the teachers details
 @Query(value = """
             SELECT
+                t.id AS id,
                 t.name AS name,
                 t.teacher_id AS teacherId,
                 t.email AS email,
