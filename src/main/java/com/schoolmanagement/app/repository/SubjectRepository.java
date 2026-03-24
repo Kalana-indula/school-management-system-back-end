@@ -12,18 +12,21 @@ import java.util.List;
 public interface SubjectRepository extends JpaRepository<Subject,Long> {
 
     @Query(value = """
-        SELECT
-            s.id AS subjectId,
-            s.name AS subjectName,
-            COALESCE(
-                STRING_AGG(DISTINCT CONCAT(t.first_name, ' ', t.last_name), ', ' ORDER BY t.first_name, t.last_name),
-                ''
-            ) AS teacherList
-        FROM subjects s
-        LEFT JOIN subject_teacher st ON st.subject_id = s.id
-        LEFT JOIN teachers t ON t.id = st.teacher_id
-        GROUP BY s.id, s.name
-        ORDER BY s.name ASC
-        """, nativeQuery = true)
+    SELECT
+        s.id AS id,
+        s.name AS subjectName,
+        COALESCE(
+            STRING_AGG(
+                DISTINCT CONCAT(t.name, ' ', t.surname),
+                ', ' ORDER BY CONCAT(t.name, ' ', t.surname)
+            ),
+            ''
+        ) AS teacherList
+    FROM subject s
+    LEFT JOIN teacher_subject ts ON ts.subject_id = s.id
+    LEFT JOIN teacher t ON t.id = ts.teacher_id
+    GROUP BY s.id, s.name
+    ORDER BY s.name ASC
+    """, nativeQuery = true)
     List<SubjectTeacherListProjection> getAllSubjectList();
 }
