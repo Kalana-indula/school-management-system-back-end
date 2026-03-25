@@ -15,5 +15,7 @@ public interface ResultListProjection {
 
     String getClassName();
 
+    String getSubjectName();
+
     LocalDate getDate();
 }

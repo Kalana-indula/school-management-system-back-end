@@ -18,6 +18,7 @@ public interface ResultRepository extends JpaRepository<Result,Long> {
             CONCAT(s.name, ' ', s.surname) AS student,
             CONCAT(t.name, ' ', t.surname) AS teacher,
             c.name AS className,
+            sub.name AS subjectName,
             CAST(a.due_date AS DATE) AS date
         FROM result r
         LEFT JOIN student s ON s.id = r.student
@@ -25,6 +26,7 @@ public interface ResultRepository extends JpaRepository<Result,Long> {
         LEFT JOIN lesson l ON l.id = a.lesson
         LEFT JOIN class_room c ON c.id = l.class_room
         LEFT JOIN teacher t ON t.id = l.teacher
+        LEFT JOIN subject sub ON sub.id = l.subject
         ORDER BY r.id ASC
         """, nativeQuery = true)
     List<ResultListProjection> getResultList();
