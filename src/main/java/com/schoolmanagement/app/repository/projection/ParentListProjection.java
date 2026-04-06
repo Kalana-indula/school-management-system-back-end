@@ -4,6 +4,8 @@ public interface ParentListProjection {
 
     Long getId();
 
+    String getName();
+
     String getStudentNames();
 
     String getPhone();

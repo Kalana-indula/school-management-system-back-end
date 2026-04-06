@@ -21,12 +21,13 @@ public interface ParentRepository extends JpaRepository<Parent, Long> {
                 ),
                 ''
             ) AS studentNames,
+                    CONCAT(p.name, ' ', p.surname) AS name,
             p.phone AS phone,
             p.email AS email,
             p.address AS address
         FROM parent p
         LEFT JOIN student s ON s.parent_id = p.id
-        GROUP BY p.id, p.phone, p.email, p.address
+        GROUP BY p.id, p.name, p.surname, p.phone, p.email, p.address
         ORDER BY p.name ASC, p.surname ASC
         """, nativeQuery = true)
     List<ParentListProjection> getAllParentsList();
