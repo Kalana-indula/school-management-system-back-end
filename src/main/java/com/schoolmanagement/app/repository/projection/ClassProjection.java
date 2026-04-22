@@ -1,6 +1,6 @@
 package com.schoolmanagement.app.repository.projection;
 
-public interface ClassListProjection{
+public interface ClassProjection {
     Long getId();
 
     String getName();

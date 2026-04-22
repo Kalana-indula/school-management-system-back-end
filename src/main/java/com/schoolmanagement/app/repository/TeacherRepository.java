@@ -51,6 +51,8 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
                 t.surname AS surname,
                 t.teacher_id AS teacherId,
                 t.email AS email,
+                t.blood_type AS bloodType,
+                t.birthday AS birthday,
                 t.img AS img,
                 COALESCE(
                     STRING_AGG(DISTINCT s.name, ', ' ORDER BY s.name),
@@ -76,6 +78,7 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
                 t.surname,
                 t.teacher_id,
                 t.email,
+                t.blood_type,
                 t.img,
                 t.phone,
                 t.address

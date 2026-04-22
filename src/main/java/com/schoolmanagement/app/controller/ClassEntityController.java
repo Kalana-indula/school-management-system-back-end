@@ -1,19 +1,16 @@
 package com.schoolmanagement.app.controller;
 
-import com.schoolmanagement.app.repository.projection.ClassListProjection;
+import com.schoolmanagement.app.repository.projection.ClassProjection;
 import com.schoolmanagement.app.service.ClassEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/classes")
+@RequestMapping("/api/v1")
 @CrossOrigin(origins = "*")
 public class ClassEntityController {
 
@@ -24,10 +21,16 @@ public class ClassEntityController {
         this.classEntityService = classEntityService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<ClassListProjection>> findAllClasses(){
+    @GetMapping("/classes")
+    public ResponseEntity<List<ClassProjection>> findAllClasses(){
 
-        List<ClassListProjection> classes=classEntityService.getClassList();
+        List<ClassProjection> classes=classEntityService.getClassList();
+        return ResponseEntity.status(HttpStatus.OK).body(classes);
+    }
+
+    @GetMapping("/teachers/{teacherId}/classes")
+    public ResponseEntity<List<ClassProjection>> findAllClassesByTeacher(@PathVariable Long teacherId){
+        List<ClassProjection> classes=classEntityService.getClassesByTeacher(teacherId);
         return ResponseEntity.status(HttpStatus.OK).body(classes);
     }
 }
