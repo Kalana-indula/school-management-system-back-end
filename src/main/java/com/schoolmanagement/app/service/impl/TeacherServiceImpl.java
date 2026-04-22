@@ -1,9 +1,8 @@
 package com.schoolmanagement.app.service.impl;
 
-import com.schoolmanagement.app.entity.Student;
-import com.schoolmanagement.app.entity.Teacher;
+import com.schoolmanagement.app.exception.ResourceNotFoundException;
 import com.schoolmanagement.app.repository.TeacherRepository;
-import com.schoolmanagement.app.repository.projection.TeacherListProjection;
+import com.schoolmanagement.app.repository.projection.TeacherProjection;
 import com.schoolmanagement.app.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +23,21 @@ public class TeacherServiceImpl implements TeacherService {
 
     //Find all available teachers
     @Override
-    public List<TeacherListProjection> findAllTeachers() {
+    public List<TeacherProjection> findAllTeachers() {
+
         return teacherRepository.getAllTeachersList();
+    }
+
+    @Override
+    public TeacherProjection findTeacherById(Long id) {
+
+        TeacherProjection teacherDetails=teacherRepository.getTeacherById(id);
+
+        if(teacherDetails == null) {
+            throw new ResourceNotFoundException("Teacher not found with id :"+id);
+        }
+
+        return teacherDetails;
     }
 
 }

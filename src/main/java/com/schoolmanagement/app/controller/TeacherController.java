@@ -1,15 +1,11 @@
 package com.schoolmanagement.app.controller;
 
-import com.schoolmanagement.app.entity.Teacher;
-import com.schoolmanagement.app.repository.projection.TeacherListProjection;
+import com.schoolmanagement.app.repository.projection.TeacherProjection;
 import com.schoolmanagement.app.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,10 +23,16 @@ public class TeacherController {
 
     //create new teacher
     @GetMapping
-    public ResponseEntity<List<TeacherListProjection>> findAllTeachers() {
+    public ResponseEntity<List<TeacherProjection>> findAllTeachers() {
 
-        List<TeacherListProjection> teachersList = teacherService.findAllTeachers();
+        List<TeacherProjection> teachersList = teacherService.findAllTeachers();
         return ResponseEntity.status(HttpStatus.OK).body(teachersList);
 
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TeacherProjection> findTeacherById(@PathVariable Long id) {
+        TeacherProjection teacher= teacherService.findTeacherById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(teacher);
     }
 }

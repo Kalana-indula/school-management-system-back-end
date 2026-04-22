@@ -1,10 +1,12 @@
 package com.schoolmanagement.app.repository.projection;
 
-public interface TeacherListProjection {
+public interface TeacherProjection {
 
     Long getId();
 
     String getName();
+
+    String getSurname();
 
     String getTeacherId();
 
