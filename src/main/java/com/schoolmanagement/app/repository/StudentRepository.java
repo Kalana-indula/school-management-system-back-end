@@ -1,7 +1,7 @@
 package com.schoolmanagement.app.repository;
 
 import com.schoolmanagement.app.entity.Student;
-import com.schoolmanagement.app.repository.projection.StudentListProjection;
+import com.schoolmanagement.app.repository.projection.StudentProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -28,5 +28,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             ON ce.id = s.class_room
         ORDER BY s.name
         """, nativeQuery = true)
-    List<StudentListProjection> getAllStudentsList();
+    List<StudentProjection> getAllStudentsList();
+
+
 }

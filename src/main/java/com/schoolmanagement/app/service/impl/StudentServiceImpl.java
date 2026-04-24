@@ -1,8 +1,7 @@
 package com.schoolmanagement.app.service.impl;
 
-import com.schoolmanagement.app.entity.Student;
 import com.schoolmanagement.app.repository.StudentRepository;
-import com.schoolmanagement.app.repository.projection.StudentListProjection;
+import com.schoolmanagement.app.repository.projection.StudentProjection;
 import com.schoolmanagement.app.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentListProjection> findAllStudents() {
+    public List<StudentProjection> findAllStudents() {
         return studentRepository.getAllStudentsList();
     }
 }
