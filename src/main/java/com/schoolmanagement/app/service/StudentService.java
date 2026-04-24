@@ -9,4 +9,6 @@ import java.util.List;
 public interface StudentService {
 
     List<StudentProjection> findAllStudents();
+
+    List<StudentProjection> findStudentsByTeacher(Long teacherId);
 }

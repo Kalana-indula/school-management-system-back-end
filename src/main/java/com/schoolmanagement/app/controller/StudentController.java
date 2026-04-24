@@ -5,15 +5,12 @@ import com.schoolmanagement.app.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/students")
+@RequestMapping("/api/v1")
 @CrossOrigin(origins = "*")
 public class StudentController {
 
@@ -24,11 +21,19 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
+    @GetMapping("/students")
     public ResponseEntity<List<StudentProjection>> findAllStudents() {
 
         List<StudentProjection> studentList = studentService.findAllStudents();
         return ResponseEntity.status(HttpStatus.OK).body(studentList);
 
+    }
+
+    @GetMapping("/teachers/{teacherId}/students")
+    public ResponseEntity<List<StudentProjection>> findStudentsByTeacher(@PathVariable Long teacherId){
+
+        List<StudentProjection> studentsList= studentService.findStudentsByTeacher(teacherId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(studentsList);
     }
 }

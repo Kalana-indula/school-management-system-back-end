@@ -1,5 +1,6 @@
 package com.schoolmanagement.app.service.impl;
 
+import com.schoolmanagement.app.exception.ResourceNotFoundException;
 import com.schoolmanagement.app.repository.StudentRepository;
 import com.schoolmanagement.app.repository.projection.StudentProjection;
 import com.schoolmanagement.app.service.StudentService;
@@ -21,5 +22,17 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentProjection> findAllStudents() {
         return studentRepository.getAllStudentsList();
+    }
+
+    @Override
+    public List<StudentProjection> findStudentsByTeacher(Long teacherId) {
+
+        List<StudentProjection> students=studentRepository.getStudentsByTeacher(teacherId);
+
+        if(students.isEmpty()){
+            throw new ResourceNotFoundException("No students found for teacher id : "+teacherId);
+        }
+
+        return students;
     }
 }
