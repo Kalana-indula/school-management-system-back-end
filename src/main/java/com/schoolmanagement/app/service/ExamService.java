@@ -1,6 +1,6 @@
 package com.schoolmanagement.app.service;
 
-import com.schoolmanagement.app.repository.projection.ExamListProjection;
+import com.schoolmanagement.app.repository.projection.ExamProjection;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,5 +8,7 @@ import java.util.List;
 @Service
 public interface ExamService {
 
-    List<ExamListProjection> getExamList();
+    List<ExamProjection> getExamList();
+
+    List<ExamProjection> getExamsByTeacher(Long teacherId);
 }
