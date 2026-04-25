@@ -1,6 +1,6 @@
 package com.schoolmanagement.app.service;
 
-import com.schoolmanagement.app.repository.projection.LessonListProjection;
+import com.schoolmanagement.app.repository.projection.LessonProjection;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,5 +8,7 @@ import java.util.List;
 @Service
 public interface LessonService {
 
-    List<LessonListProjection> getLessonList();
+    List<LessonProjection> getLessonList();
+
+    List<LessonProjection> getLessonsByTeacher(Long teacherId);
 }
