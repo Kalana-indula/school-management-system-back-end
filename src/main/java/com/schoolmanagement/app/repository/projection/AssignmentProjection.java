@@ -2,7 +2,7 @@ package com.schoolmanagement.app.repository.projection;
 
 import java.time.LocalDate;
 
-public interface AssignmentListProjection {
+public interface AssignmentProjection {
     Long getId();
 
     String getSubjectName();
