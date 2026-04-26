@@ -25,6 +25,18 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public StudentProjection findStudentById(Long studentId) {
+
+        StudentProjection student=studentRepository.getStudentById(studentId);
+
+        if(student == null){
+            throw new ResourceNotFoundException("No students found for id : "+studentId);
+        }
+
+        return student;
+    }
+
+    @Override
     public List<StudentProjection> findStudentsByTeacher(Long teacherId) {
 
         List<StudentProjection> students=studentRepository.getStudentsByTeacher(teacherId);

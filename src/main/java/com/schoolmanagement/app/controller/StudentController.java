@@ -29,6 +29,14 @@ public class StudentController {
 
     }
 
+//    get a single student by id
+    @GetMapping("/students/{studentId}")
+    public ResponseEntity<StudentProjection> findStudentById(@PathVariable Long studentId) {
+        StudentProjection student = studentService.findStudentById(studentId);
+        return ResponseEntity.status(HttpStatus.OK).body(student);
+    }
+
+    // get all students by a teacher
     @GetMapping("/teachers/{teacherId}/students")
     public ResponseEntity<List<StudentProjection>> findStudentsByTeacher(@PathVariable Long teacherId){
 

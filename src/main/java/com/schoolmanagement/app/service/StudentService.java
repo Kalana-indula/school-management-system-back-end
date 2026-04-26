@@ -10,5 +10,7 @@ public interface StudentService {
 
     List<StudentProjection> findAllStudents();
 
+    StudentProjection findStudentById(Long studentId);
+
     List<StudentProjection> findStudentsByTeacher(Long teacherId);
 }

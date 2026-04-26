@@ -6,6 +6,8 @@ public interface StudentProjection {
 
     String getName();
 
+    String getSurname();
+
     String getStudentId();
 
     Integer getGrade();
