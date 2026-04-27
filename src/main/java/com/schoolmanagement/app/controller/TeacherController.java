@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/teachers")
+@RequestMapping("/api/v1")
 @CrossOrigin(origins = "*")
 public class TeacherController {
 
@@ -22,7 +22,7 @@ public class TeacherController {
     }
 
     //create new teacher
-    @GetMapping
+    @GetMapping("/teachers")
     public ResponseEntity<List<TeacherProjection>> findAllTeachers() {
 
         List<TeacherProjection> teachersList = teacherService.findAllTeachers();
@@ -30,9 +30,15 @@ public class TeacherController {
 
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/teachers/{id}")
     public ResponseEntity<TeacherProjection> findTeacherById(@PathVariable Long id) {
         TeacherProjection teacher= teacherService.findTeacherById(id);
         return ResponseEntity.status(HttpStatus.OK).body(teacher);
+    }
+
+    @GetMapping("/students/{studentId}/teachers")
+    public ResponseEntity<List<TeacherProjection>> findTeachersByStudent(@PathVariable Long studentId) {
+        List<TeacherProjection> teachersList = teacherService.findTeacherByStudent(studentId);
+        return ResponseEntity.status(HttpStatus.OK).body(teachersList);
     }
 }

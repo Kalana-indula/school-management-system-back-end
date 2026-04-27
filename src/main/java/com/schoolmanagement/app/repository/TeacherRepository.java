@@ -81,7 +81,53 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
                 t.blood_type,
                 t.img,
                 t.phone,
-                t.address
+                t.address,
+                t.birthday,
             """, nativeQuery = true)
     TeacherProjection getTeacherById(Long id);
+
+
+    // get teachers by student
+    @Query(value = """
+        SELECT
+            t.id AS id,
+            t.name AS name,
+            t.surname AS surname,
+            t.teacher_id AS teacherId,
+            t.email AS email,
+            t.img AS img,
+            COALESCE(
+                STRING_AGG(DISTINCT sub.name, ', ' ORDER BY sub.name),
+                ''
+            ) AS subjects,
+            COALESCE(
+                STRING_AGG(DISTINCT cr.name, ', ' ORDER BY cr.name),
+                ''
+            ) AS classes,
+            t.phone AS phone,
+            t.address AS address
+        FROM student st
+        INNER JOIN class_room cr
+            ON cr.id = st.class_room
+        INNER JOIN lesson l
+            ON l.class_room = cr.id
+        INNER JOIN teacher t
+            ON t.id = l.teacher
+        LEFT JOIN teacher_subject ts
+            ON ts.teacher_id = t.id
+        LEFT JOIN subject sub
+            ON sub.id = ts.subject_id
+        WHERE st.id = :id
+        GROUP BY
+            t.id,
+            t.name,
+            t.surname,
+            t.teacher_id,
+            t.email,
+            t.img,
+            t.phone,
+            t.address
+        ORDER BY t.name
+        """, nativeQuery = true)
+    List<TeacherProjection> getTeachersByStudent(Long id);
 }

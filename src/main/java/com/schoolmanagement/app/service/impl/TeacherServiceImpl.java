@@ -40,4 +40,16 @@ public class TeacherServiceImpl implements TeacherService {
         return teacherDetails;
     }
 
+    @Override
+    public List<TeacherProjection> findTeacherByStudent(Long studentId) {
+
+        List<TeacherProjection> teachers=teacherRepository.getTeachersByStudent(studentId);
+
+        if(teachers.isEmpty()) {
+            throw new ResourceNotFoundException("Teacher not found for entered student id : "+studentId);
+        }
+
+        return teachers;
+    }
+
 }

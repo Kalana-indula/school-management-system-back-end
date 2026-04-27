@@ -12,4 +12,6 @@ public interface TeacherService {
 
     TeacherProjection findTeacherById(Long id);
 
+    List<TeacherProjection> findTeacherByStudent(Long studentId);
+
 }
