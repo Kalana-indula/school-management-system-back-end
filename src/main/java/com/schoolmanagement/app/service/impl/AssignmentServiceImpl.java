@@ -34,4 +34,16 @@ public class AssignmentServiceImpl implements AssignmentService {
         }
         return assignmentsList;
     }
+
+    @Override
+    public List<AssignmentProjection> getAssignmentsByStudent(Long studentId) {
+
+        List<AssignmentProjection> assignmentsList=assignmentRepository.getAssignmentsByStudent(studentId);
+
+        if(assignmentsList.isEmpty()){
+            throw new ResourceNotFoundException("No assignments found for the student ID : "+studentId);
+        }
+
+        return assignmentsList;
+    }
 }

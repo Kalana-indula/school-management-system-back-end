@@ -2,6 +2,7 @@ package com.schoolmanagement.app.service.impl;
 
 import com.schoolmanagement.app.exception.ResourceNotFoundException;
 import com.schoolmanagement.app.repository.ExamRepository;
+import com.schoolmanagement.app.repository.projection.AssignmentProjection;
 import com.schoolmanagement.app.repository.projection.ExamProjection;
 import com.schoolmanagement.app.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,4 +48,5 @@ public class ExamServiceImpl implements ExamService {
 
         return examList;
     }
+
 }

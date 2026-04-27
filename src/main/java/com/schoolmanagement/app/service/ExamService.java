@@ -13,4 +13,5 @@ public interface ExamService {
     List<ExamProjection> getExamsByTeacher(Long teacherId);
 
     List<ExamProjection> getExamsByStudent(Long studentId);
+
 }

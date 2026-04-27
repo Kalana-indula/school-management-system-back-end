@@ -11,4 +11,6 @@ public interface AssignmentService {
     List<AssignmentProjection>  getAssignmentList();
 
     List<AssignmentProjection> getAssignmentsByTeacher(Long teacherId);
+
+    List<AssignmentProjection> getAssignmentsByStudent(Long studentId);
 }

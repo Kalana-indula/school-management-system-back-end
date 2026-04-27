@@ -34,4 +34,10 @@ public class AssignmentController {
         List<AssignmentProjection> assignmentList = assignmentService.getAssignmentsByTeacher(teacherId);
         return ResponseEntity.status(HttpStatus.OK).body(assignmentList);
     }
+
+    @GetMapping("/students/{studentId}/assignments")
+    public ResponseEntity<List<AssignmentProjection>> findAssignmentsByStudent(@PathVariable Long studentId) {
+        List<AssignmentProjection> assignmentList = assignmentService.getAssignmentsByStudent(studentId);
+        return ResponseEntity.status(HttpStatus.OK).body(assignmentList);
+    }
 }
