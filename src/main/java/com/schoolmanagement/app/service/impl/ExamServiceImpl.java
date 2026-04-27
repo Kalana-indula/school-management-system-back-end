@@ -35,4 +35,16 @@ public class ExamServiceImpl implements ExamService {
 
         return examList;
     }
+
+    @Override
+    public List<ExamProjection> getExamsByStudent(Long studentId) {
+
+        List<ExamProjection> examList=examRepository.getExamsByStudent(studentId);
+
+        if(examList.isEmpty()){
+            throw new ResourceNotFoundException("No exams found for student Id "+studentId);
+        }
+
+        return examList;
+    }
 }

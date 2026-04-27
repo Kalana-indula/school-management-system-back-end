@@ -31,5 +31,12 @@ public class ExamController {
     public ResponseEntity<List<ExamProjection>> getExamsByTeacher(@PathVariable Long teacherId) {
         List<ExamProjection> exams=examService.getExamsByTeacher(teacherId);
         return ResponseEntity.status(HttpStatus.OK).body(exams);
+
+    }
+
+    @GetMapping("/students/{studentId}/exams")
+    public ResponseEntity<List<ExamProjection>> getExamsByStudent(@PathVariable Long studentId) {
+        List<ExamProjection> exams=examService.getExamsByStudent(studentId);
+        return ResponseEntity.status(HttpStatus.OK).body(exams);
     }
 }
