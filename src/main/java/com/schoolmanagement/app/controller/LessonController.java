@@ -35,5 +35,11 @@ public class LessonController {
         return ResponseEntity.status(HttpStatus.OK).body(lessonList);
     }
 
+    @GetMapping("/students/{studentId}/lessons")
+    public ResponseEntity<List<LessonProjection>> findLessonsByStudent(@PathVariable Long studentId) {
+        List<LessonProjection> lessonList=lessonService.getLessonsByStudent(studentId);
+        return ResponseEntity.status(HttpStatus.OK).body(lessonList);
+    }
+
 
 }

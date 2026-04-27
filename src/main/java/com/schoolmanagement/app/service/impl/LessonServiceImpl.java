@@ -35,4 +35,17 @@ public class LessonServiceImpl implements LessonService {
 
         return lessons;
     }
+
+    //get all the lessons taken by student
+    @Override
+    public List<LessonProjection> getLessonsByStudent(Long studentId) {
+
+        List<LessonProjection> lessons=lessonRepository.getLessonsByStudent(studentId);
+
+        if(lessons.isEmpty()){
+            throw new ResourceNotFoundException("No lessons found for student ID : "+studentId);
+        }
+
+        return lessons;
+    }
 }

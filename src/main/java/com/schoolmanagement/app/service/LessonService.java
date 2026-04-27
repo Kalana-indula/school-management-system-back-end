@@ -11,4 +11,6 @@ public interface LessonService {
     List<LessonProjection> getLessonList();
 
     List<LessonProjection> getLessonsByTeacher(Long teacherId);
+
+    List<LessonProjection> getLessonsByStudent(Long studentId);
 }
