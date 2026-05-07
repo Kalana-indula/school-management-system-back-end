@@ -1,5 +1,7 @@
 package com.schoolmanagement.app.controller;
 
+import com.schoolmanagement.app.dto.CreateClassDto;
+import com.schoolmanagement.app.entity.ClassEntity;
 import com.schoolmanagement.app.repository.projection.ClassProjection;
 import com.schoolmanagement.app.service.ClassEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +34,11 @@ public class ClassEntityController {
     public ResponseEntity<List<ClassProjection>> findAllClassesByTeacher(@PathVariable Long teacherId){
         List<ClassProjection> classes=classEntityService.getClassesByTeacher(teacherId);
         return ResponseEntity.status(HttpStatus.OK).body(classes);
+    }
+
+    @PostMapping("/classes")
+    public ResponseEntity<ClassEntity> createClass(@RequestBody CreateClassDto createClassDto){
+        ClassEntity createdClass=classEntityService.createClass(createClassDto);
+        return ResponseEntity.status(HttpStatus.OK).body(createdClass);
     }
 }
