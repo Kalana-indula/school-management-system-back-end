@@ -7,6 +7,8 @@ import com.schoolmanagement.app.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GradeServiceImpl implements GradeService {
 
@@ -26,5 +28,13 @@ public class GradeServiceImpl implements GradeService {
         Grade createdGrade = gradeRepository.save(grade);
 
         return createdGrade;
+    }
+
+    @Override
+    public List<Grade> getAllGrades() {
+
+        List<Grade> grades = gradeRepository.findAll();
+
+        return grades;
     }
 }
