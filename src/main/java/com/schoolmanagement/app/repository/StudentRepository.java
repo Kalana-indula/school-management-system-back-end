@@ -42,7 +42,10 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             ce.name AS className,
             s.phone AS phone,
             s.address AS address,
-            s.img AS image
+            s.img AS image,
+            s.birth_day AS birthday,
+            s.blood_type AS bloodType,
+            s.email AS email
         FROM student s
         INNER JOIN grade g
             ON g.id = s.grade

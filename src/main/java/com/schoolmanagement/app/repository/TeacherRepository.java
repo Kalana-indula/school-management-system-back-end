@@ -82,7 +82,7 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
                 t.img,
                 t.phone,
                 t.address,
-                t.birthday,
+                t.birthday
             """, nativeQuery = true)
     TeacherProjection getTeacherById(Long id);
 

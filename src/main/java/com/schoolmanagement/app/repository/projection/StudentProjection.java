@@ -1,5 +1,7 @@
 package com.schoolmanagement.app.repository.projection;
 
+import java.time.LocalDateTime;
+
 public interface StudentProjection {
 
     Long getId();
@@ -19,4 +21,10 @@ public interface StudentProjection {
     String getPhone();
 
     String getAddress();
+
+    LocalDateTime getBirthday();
+
+    String getBloodType();
+
+    String getEmail();
 }

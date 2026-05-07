@@ -23,4 +23,6 @@ public class Admin {
 
     @Column(nullable = false, unique = true)
     private String username;
+
+
 }
