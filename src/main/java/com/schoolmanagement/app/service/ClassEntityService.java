@@ -1,6 +1,6 @@
 package com.schoolmanagement.app.service;
 
-import com.schoolmanagement.app.dto.CreateClassDto;
+import com.schoolmanagement.app.dto.create.CreateClassDto;
 import com.schoolmanagement.app.entity.ClassEntity;
 import com.schoolmanagement.app.repository.projection.ClassProjection;
 import org.springframework.stereotype.Service;

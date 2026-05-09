@@ -1,6 +1,6 @@
 package com.schoolmanagement.app.controller;
 
-import com.schoolmanagement.app.dto.CreateClassDto;
+import com.schoolmanagement.app.dto.create.CreateClassDto;
 import com.schoolmanagement.app.entity.ClassEntity;
 import com.schoolmanagement.app.repository.projection.ClassProjection;
 import com.schoolmanagement.app.service.ClassEntityService;

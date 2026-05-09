@@ -1,4 +1,4 @@
-package com.schoolmanagement.app.dto;
+package com.schoolmanagement.app.dto.create;
 
 import lombok.Getter;
 import lombok.Setter;

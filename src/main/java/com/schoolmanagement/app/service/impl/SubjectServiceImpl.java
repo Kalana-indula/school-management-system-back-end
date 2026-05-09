@@ -1,5 +1,7 @@
 package com.schoolmanagement.app.service.impl;
 
+import com.schoolmanagement.app.dto.create.CreateSubjectDto;
+import com.schoolmanagement.app.entity.Subject;
 import com.schoolmanagement.app.repository.SubjectRepository;
 import com.schoolmanagement.app.repository.projection.SubjectTeacherListProjection;
 import com.schoolmanagement.app.service.SubjectService;
@@ -21,5 +23,15 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public List<SubjectTeacherListProjection> getSubjectTeacherList() {
         return subjectRepository.getAllSubjectList();
+    }
+
+    @Override
+    public Subject createSubject(CreateSubjectDto createSubjectDto) {
+
+        Subject createdSubject=new Subject();
+
+        createdSubject.setName(createSubjectDto.getSubjectName());
+
+        return subjectRepository.save(createdSubject);
     }
 }

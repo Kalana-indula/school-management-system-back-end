@@ -1,6 +1,6 @@
 package com.schoolmanagement.app.controller;
 
-import com.schoolmanagement.app.dto.GradeDto;
+import com.schoolmanagement.app.dto.create.GradeDto;
 import com.schoolmanagement.app.entity.Grade;
 import com.schoolmanagement.app.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;

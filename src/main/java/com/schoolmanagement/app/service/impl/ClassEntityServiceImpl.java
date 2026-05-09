@@ -1,6 +1,6 @@
 package com.schoolmanagement.app.service.impl;
 
-import com.schoolmanagement.app.dto.CreateClassDto;
+import com.schoolmanagement.app.dto.create.CreateClassDto;
 import com.schoolmanagement.app.entity.ClassEntity;
 import com.schoolmanagement.app.entity.Grade;
 import com.schoolmanagement.app.entity.Teacher;

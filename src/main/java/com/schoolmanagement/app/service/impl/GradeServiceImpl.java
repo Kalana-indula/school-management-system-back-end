@@ -1,6 +1,6 @@
 package com.schoolmanagement.app.service.impl;
 
-import com.schoolmanagement.app.dto.GradeDto;
+import com.schoolmanagement.app.dto.create.GradeDto;
 import com.schoolmanagement.app.entity.Grade;
 import com.schoolmanagement.app.repository.GradeRepository;
 import com.schoolmanagement.app.service.GradeService;
